@@ -9,7 +9,7 @@ import { RiWhatsappLine, RiCloseLine, RiArrowRightLine } from 'react-icons/ri'
 // Format: country code + number (no + or spaces)
 // e.g. India: 919876543210
 // ============================================================
-const WHATSAPP_NUMBER = '919999999999' // ← PASTE YOUR WHATSAPP NUMBER HERE
+const WHATSAPP_NUMBER = '+917827651976' // ← PASTE YOUR WHATSAPP NUMBER HERE
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hi! I visited The Groove Studio website and I'm interested in booking a session. Can we talk?"
 )
