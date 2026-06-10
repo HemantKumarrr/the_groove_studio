@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import {
   RiPlayCircleLine,
   RiPauseCircleLine,
@@ -12,21 +12,40 @@ import type { Track } from '@/lib/genres'
 interface TrackCardProps {
   track: Track
   index: number
+  activeTrack: string | null
+  setActiveTrack: (id: string | null) => void
 }
 
-export default function TrackCard({ track, index }: TrackCardProps) {
+export default function TrackCard({ track, index, activeTrack, setActiveTrack }: TrackCardProps) {
   const [playing, setPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  const togglePlay = () => {
-    if (!track.audioSrc) return
-    if (playing) {
-      audioRef.current?.pause()
-    } else {
-      audioRef.current?.play()
-    }
-    setPlaying(!playing)
+  // const togglePlay = () => {
+  //   if (!track.audioSrc) return
+  //   if (playing) {
+  //     audioRef.current?.pause()
+  //   } else {
+  //     audioRef.current?.play()
+  //   }
+  //   setPlaying(!playing)
+  // }
+  const isPlaying = activeTrack === track.id
+
+const togglePlay = () => {
+  if (!track.audioSrc || !audioRef.current) return
+
+  if (audioRef.current.paused) {
+    document.querySelectorAll('audio').forEach((audio) => {
+      if (audio !== audioRef.current) {
+        audio.pause()
+      }
+    })
+
+    audioRef.current.play()
+  } else {
+    audioRef.current.pause()
   }
+}
 
   const handleAudioEnd = () => setPlaying(false)
 
@@ -35,6 +54,16 @@ export default function TrackCard({ track, index }: TrackCardProps) {
       window.open(track.youtubeUrl, '_blank', 'noopener,noreferrer')
     }
   }
+
+  useEffect(() => {
+  if (!audioRef.current) return
+
+  if (activeTrack === track.id) {
+    audioRef.current.play()
+  } else {
+    audioRef.current.pause()
+  }
+}, [activeTrack, track.id])
 
   return (
     <div className="group relative bg-groove-gray-700/40 border border-groove-gray-700 rounded-2xl overflow-hidden hover:border-groove-gray-500 transition-all duration-300 hover:bg-groove-gray-700/60">
@@ -138,7 +167,9 @@ export default function TrackCard({ track, index }: TrackCardProps) {
           <audio
             ref={audioRef}
             src={track.audioSrc}
-            onEnded={handleAudioEnd}
+            onEnded={() => setPlaying(false)}
+            onPause={() => setPlaying(false)}
+            onPlay={() => setPlaying(true)}
             className="hidden"
             preload="none"
           />

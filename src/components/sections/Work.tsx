@@ -6,6 +6,7 @@ import TrackCard from '@/components/ui/TrackCard'
 
 export default function Work() {
   const [activeGenreId, setActiveGenreId] = useState<string>(genres[0].id)
+  const [activeTrack, setActiveTrack] = useState<string | null>(null)
 
   const currentGenre = genres.find((g) => g.id === activeGenreId) ?? genres[0]
 
@@ -64,7 +65,7 @@ export default function Work() {
         {currentGenre.tracks.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {currentGenre.tracks.map((track, i) => (
-              <TrackCard key={track.id} track={track} index={i} />
+              <TrackCard key={track.id} track={track} index={i} activeTrack={activeTrack} setActiveTrack={setActiveTrack} />
             ))}
           </div>
         ) : (
