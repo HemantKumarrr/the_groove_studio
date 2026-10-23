@@ -18,7 +18,7 @@ const CONTACT = {
   phone: "+91 78276 51976",
   // ← PASTE YOUR EMAIL
   email: "yourgroovestudio@gmail.com",
-  address: "C-906, KW Srishti-1, Raj Nagar Extension, Ghaziabad, UP",
+  address: "A-303, Milan Earth, Raj Nagar Extension, Ghaziabad, UP",
   // ← PASTE YOUR WHATSAPP LINK (with your number)
   whatsapp:
     "https://api.whatsapp.com/message/YCFLSAIOT4N7B1?autoload=1&app_absent=0",

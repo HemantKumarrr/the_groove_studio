@@ -64,7 +64,7 @@ export default function About() {
                   Find Us Here
                 </p>
                 <p className="text-groove-gray-400 text-sm mt-1">
-                  C-906, KW Srishti-1, Raj Nagar Extension,
+                  A-303, Milan Earth, Raj Nagar Extension,
                   <br />
                   Ghaziabad, Uttar Pradesh
                 </p>
@@ -98,7 +98,7 @@ export default function About() {
                   { label: "Genres", value: "7 Genres Covered" },
                   {
                     label: "Location",
-                    value: "KW Srishti-1, Raj Nagar Ext., Ghaziabad",
+                    value: "Milan Earth, Raj Nagar Ext., Ghaziabad",
                   },
                 ].map((item) => (
                   <div

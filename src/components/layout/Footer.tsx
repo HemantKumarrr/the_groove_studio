@@ -19,7 +19,7 @@ export default function Footer() {
 
           {/* Center */}
           <p className="text-groove-gray-500 text-xs text-center">
-            C-906, Raj Nagar Extension, Ghaziabad, Uttar Pradesh
+            A-303, Raj Nagar Extension, Ghaziabad, Uttar Pradesh
           </p>
 
           {/* Right */}
